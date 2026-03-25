@@ -1,0 +1,94 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.20.1
+  name: saauditors.security.security.tokenguard.io
+spec:
+  group: security.security.tokenguard.io
+  names:
+    kind: SAAuditor
+    listKind: SAAuditorList
+    plural: saauditors
+    singular: saauditor
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: SAAuditor is the Schema for the saauditors API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: spec defines the desired state of SAAuditor
+            properties:
+              alertThreshold:
+                description: AlertThreshold sets the minimum score (0-100) before
+                  triggering an alert.
+                format: int32
+                maximum: 100
+                minimum: 0
+                type: integer
+              scoringInterval:
+                description: ScoringInterval is how often to recalculate the Least
+                  Privilege Score.
+                type: string
+              targetNamespace:
+                description: TargetNamespace is the namespace to monitor ServiceAccounts
+                  in.
+                type: string
+            required:
+            - targetNamespace
+            type: object
+          status:
+            description: status defines the observed state of SAAuditor
+            properties:
+              anomalies:
+                description: Anomalies detects external IP bindings or unprecedented
+                  actions.
+                items:
+                  type: string
+                type: array
+              currentScore:
+                description: |-
+                  CurrentScore represents the Least Privilege Score (0-100%).
+                  100% means perfect least privilege (all granted permissions are used).
+                format: int32
+                type: integer
+              unusedPermissions:
+                description: UnusedPermissions lists the API rules granted but never
+                  utilized.
+                items:
+                  type: string
+                type: array
+              usedPermissions:
+                description: UsedPermissions lists the API rules actually utilized
+                  by the ServiceAccount.
+                items:
+                  type: string
+                type: array
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

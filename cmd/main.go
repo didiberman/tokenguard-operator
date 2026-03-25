@@ -37,6 +37,8 @@ import (
 
 	securityv1 "github.com/yadid/token-guard/api/v1"
 	"github.com/yadid/token-guard/internal/controller"
+	"github.com/yadid/token-guard/pkg/audit"
+	"github.com/yadid/token-guard/pkg/rbac"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -178,9 +180,19 @@ func main() {
 		os.Exit(1)
 	}
 
+	auditRecv := audit.NewReceiver()
+	if err := mgr.Add(auditRecv); err != nil {
+		setupLog.Error(err, "Failed to add audit webhook receiver to manager")
+		os.Exit(1)
+	}
+
+	rbacEval := rbac.NewEvaluator(mgr.GetClient())
+
 	if err := (&controller.SAAuditorReconciler{
-		Client: mgr.GetClient(),
-		Scheme: mgr.GetScheme(),
+		Client:        mgr.GetClient(),
+		Scheme:        mgr.GetScheme(),
+		AuditReceiver: auditRecv,
+		RBACEval:      rbacEval,
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "Failed to create controller", "controller", "SAAuditor")
 		os.Exit(1)
