@@ -37,7 +37,18 @@ hcloud server create --name "$SERVER_NAME" --image debian-12 --type cx23 --locat
 SERVER_IP=$(hcloud server describe "$SERVER_NAME" -o format="{{.PublicNet.IPv4.IP}}")
 
 echo "==> 4. Waiting for SSH daemon to start at $SERVER_IP..."
-sleep 20
+for i in $(seq 1 30); do
+  if ssh -i ./e2e_key -o StrictHostKeyChecking=no -o ConnectTimeout=5 -o BatchMode=yes root@$SERVER_IP true 2>/dev/null; then
+    echo "    -> SSH ready after ${i}x5s"
+    break
+  fi
+  echo "    -> Attempt $i/30: SSH not ready yet, retrying in 5s..."
+  sleep 5
+  if [ "$i" -eq 30 ]; then
+    echo "ERROR: SSH never became available after 150s"
+    exit 1
+  fi
+done
 
 echo "==> 5. Installing K3s (Lightweight Kubernetes) securely over SSH..."
 ssh -i ./e2e_key -o StrictHostKeyChecking=no root@$SERVER_IP \
