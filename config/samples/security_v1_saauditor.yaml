@@ -1,0 +1,9 @@
+apiVersion: security.security.tokenguard.io/v1
+kind: SAAuditor
+metadata:
+  labels:
+    app.kubernetes.io/name: my-crd-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: saauditor-sample
+spec:
+  # TODO(user): Add fields here
