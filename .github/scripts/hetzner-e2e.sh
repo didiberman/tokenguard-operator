@@ -34,7 +34,7 @@ hcloud firewall create --name "$FIREWALL_NAME" --rules-file firewall.json
 
 echo "==> 3. Provisioning Ephemeral CX23 Debian 12 Server in Falkenstein..."
 hcloud server create --name "$SERVER_NAME" --image debian-12 --type cx23 --location fsn1 --ssh-key "$SSH_KEY_NAME" --firewall "$FIREWALL_NAME" --without-ipv6
-SERVER_IP=$(hcloud server describe "$SERVER_NAME" -o format={{.IPv4}})
+SERVER_IP=$(hcloud server describe "$SERVER_NAME" -o format="{{.PublicNet.IPv4.IP}}")
 
 echo "==> 4. Waiting for SSH daemon to start at $SERVER_IP..."
 sleep 20
