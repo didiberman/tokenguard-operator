@@ -1,0 +1,360 @@
+Run on Ubuntu	Set up job	﻿2026-03-25T16:18:13.2007837Z Current runner version: '2.332.0'
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2030786Z ##[group]Runner Image Provisioner
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2031598Z Hosted Compute Agent
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2032154Z Version: 20260213.493
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2032676Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2033327Z Build Date: 2026-02-13T00:28:41Z
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2033909Z Worker ID: {f391f2ef-a6d8-4663-992f-aeb35503ddc7}
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2034677Z Azure Region: westus3
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2035139Z ##[endgroup]
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2036485Z ##[group]Operating System
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2037038Z Ubuntu
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2037464Z 24.04.3
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2037890Z LTS
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2038271Z ##[endgroup]
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2038709Z ##[group]Runner Image
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2039162Z Image: ubuntu-24.04
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2039650Z Version: 20260309.50.1
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2040518Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2041945Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2042742Z ##[endgroup]
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2043710Z ##[group]GITHUB_TOKEN Permissions
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2045635Z Contents: read
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2046097Z Metadata: read
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2046607Z Packages: read
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2047052Z ##[endgroup]
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2048954Z Secret source: Actions
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2049624Z Prepare workflow directory
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2397263Z Prepare all required actions
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.2445949Z Getting action download info
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.6863749Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Run on Ubuntu	Set up job	2026-03-25T16:18:13.8319065Z Download action repository 'actions/setup-go@v5' (SHA:40f1582b2485089dde7abd97c1529aa768e1baff)
+Run on Ubuntu	Set up job	2026-03-25T16:18:14.7807473Z Complete job name: Run on Ubuntu
+Run on Ubuntu	Clone the code	﻿2026-03-25T16:18:14.8555184Z ##[group]Run actions/checkout@v4
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8556662Z with:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8557593Z   repository: didiberman/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8559047Z   token: ***
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8559929Z   ssh-strict: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8560738Z   ssh-user: git
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8561581Z   persist-credentials: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8562577Z   clean: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8563442Z   sparse-checkout-cone-mode: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8564569Z   fetch-depth: 1
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8565431Z   fetch-tags: false
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8566242Z   show-progress: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8567132Z   lfs: false
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8567952Z   submodules: false
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8568776Z   set-safe-directory: true
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.8570017Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9590499Z Syncing repository: didiberman/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9593370Z ##[group]Getting Git version info
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9595256Z Working directory is '/home/runner/work/tokenguard-operator/tokenguard-operator'
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9597685Z [command]/usr/bin/git version
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9631383Z git version 2.53.0
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9656122Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9670205Z Temporarily overriding HOME='/home/runner/work/_temp/ba74c9a6-eebf-41b8-a506-530e3cedab54' before making global git config changes
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9675076Z Adding repository directory to the temporary git global config as a safe directory
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9685437Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tokenguard-operator/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9719180Z Deleting the contents of '/home/runner/work/tokenguard-operator/tokenguard-operator'
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9723126Z ##[group]Initializing the repository
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9728226Z [command]/usr/bin/git init /home/runner/work/tokenguard-operator/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9803225Z hint: Using 'master' as the name for the initial branch. This default branch name
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9805982Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9809567Z hint: to use in all of your new repositories, which will suppress this warning,
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9812011Z hint: call:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9813448Z hint:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9815247Z hint: 	git config --global init.defaultBranch <name>
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9817128Z hint:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9819026Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9822023Z hint: 'development'. The just-created branch can be renamed via this command:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9824507Z hint:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9825367Z hint: 	git branch -m <name>
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9826296Z hint:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9827695Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9831276Z Initialized empty Git repository in /home/runner/work/tokenguard-operator/tokenguard-operator/.git/
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9835501Z [command]/usr/bin/git remote add origin https://github.com/didiberman/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9848654Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9851023Z ##[group]Disabling automatic garbage collection
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9853122Z [command]/usr/bin/git config --local gc.auto 0
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9877940Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9880364Z ##[group]Setting up auth
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9885427Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Run on Ubuntu	Clone the code	2026-03-25T16:18:14.9912974Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0173557Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0201360Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0373737Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0406624Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0582929Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0614559Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0616475Z ##[group]Fetching the repository
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.0623215Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +996cd829cf369622626efd85f91801060427374c:refs/remotes/origin/master
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4865325Z From https://github.com/didiberman/tokenguard-operator
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4867152Z  * [new ref]         996cd829cf369622626efd85f91801060427374c -> origin/master
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4896366Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4898458Z ##[group]Determining the checkout info
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4901011Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.4902970Z [command]/usr/bin/git sparse-checkout disable
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5048082Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5054679Z ##[group]Checking out the ref
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5056951Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5059454Z Reset branch 'master'
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5060862Z branch 'master' set up to track 'origin/master'.
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5065004Z ##[endgroup]
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5073391Z [command]/usr/bin/git log -1 --format=%H
+Run on Ubuntu	Clone the code	2026-03-25T16:18:15.5093486Z 996cd829cf369622626efd85f91801060427374c
+Run on Ubuntu	Setup Go	﻿2026-03-25T16:18:15.5349241Z ##[group]Run actions/setup-go@v5
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5350110Z with:
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5350758Z   go-version-file: go.mod
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5351545Z   check-latest: false
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5352496Z   token: ***
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5353145Z   cache: true
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.5353812Z ##[endgroup]
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.6876129Z Setup go version spec 1.25.3
+Run on Ubuntu	Setup Go	2026-03-25T16:18:15.6887238Z Attempting to download 1.25.3...
+Run on Ubuntu	Setup Go	2026-03-25T16:18:16.5318813Z matching 1.25.3...
+Run on Ubuntu	Setup Go	2026-03-25T16:18:16.5355060Z Acquiring 1.25.3 from https://github.com/actions/go-versions/releases/download/1.25.3-18483679098/go-1.25.3-linux-x64.tar.gz
+Run on Ubuntu	Setup Go	2026-03-25T16:18:17.0913195Z Extracting Go...
+Run on Ubuntu	Setup Go	2026-03-25T16:18:17.1031673Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/43b7e6ef-cb4d-4dd4-808f-550eb5c73b81 -f /home/runner/work/_temp/58ad15c3-540e-431c-942f-760fab1f8bb8
+Run on Ubuntu	Setup Go	2026-03-25T16:18:18.3932147Z Successfully extracted go to /home/runner/work/_temp/43b7e6ef-cb4d-4dd4-808f-550eb5c73b81
+Run on Ubuntu	Setup Go	2026-03-25T16:18:18.3932953Z Adding to the cache ...
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7058519Z Successfully cached go to /opt/hostedtoolcache/go/1.25.3/x64
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7059968Z Added go to the path
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7062825Z Successfully set up Go version 1.25.3
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7227788Z [command]/opt/hostedtoolcache/go/1.25.3/x64/bin/go env GOMODCACHE
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7250361Z [command]/opt/hostedtoolcache/go/1.25.3/x64/bin/go env GOCACHE
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7277656Z /home/runner/go/pkg/mod
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.7290920Z /home/runner/.cache/go-build
+Run on Ubuntu	Setup Go	2026-03-25T16:18:21.9486330Z Cache hit for: setup-go-Linux-x64-ubuntu24-go-1.25.3-6cf5617e09df37a4831aaef4adf80096d8c20fb033749df21d6e77f04a732c87
+Run on Ubuntu	Setup Go	2026-03-25T16:18:23.2208776Z Received 37748736 of 467187190 (8.1%), 36.0 MBs/sec
+Run on Ubuntu	Setup Go	2026-03-25T16:18:24.2200082Z Received 134217728 of 467187190 (28.7%), 64.0 MBs/sec
+Run on Ubuntu	Setup Go	2026-03-25T16:18:25.2200706Z Received 268435456 of 467187190 (57.5%), 85.3 MBs/sec
+Run on Ubuntu	Setup Go	2026-03-25T16:18:26.2227227Z Received 436207616 of 467187190 (93.4%), 103.9 MBs/sec
+Run on Ubuntu	Setup Go	2026-03-25T16:18:26.3986002Z Received 467187190 of 467187190 (100.0%), 106.6 MBs/sec
+Run on Ubuntu	Setup Go	2026-03-25T16:18:26.3986814Z Cache Size: ~446 MB (467187190 B)
+Run on Ubuntu	Setup Go	2026-03-25T16:18:26.4018870Z [command]/usr/bin/tar -xf /home/runner/work/_temp/7473b82b-37c7-4360-a2f0-95574a5cc228/cache.tzst -P -C /home/runner/work/tokenguard-operator/tokenguard-operator --use-compress-program unzstd
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.0414426Z Cache restored successfully
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.0947214Z Cache restored from key: setup-go-Linux-x64-ubuntu24-go-1.25.3-6cf5617e09df37a4831aaef4adf80096d8c20fb033749df21d6e77f04a732c87
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.0989800Z go version go1.25.3 linux/amd64
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.0990196Z 
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.0990666Z ##[group]go env
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2900261Z AR='ar'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2900793Z CC='gcc'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2901007Z CGO_CFLAGS='-O2 -g'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2901300Z CGO_CPPFLAGS=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2901576Z CGO_CXXFLAGS='-O2 -g'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2901941Z CGO_ENABLED='1'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2902294Z CGO_FFLAGS='-O2 -g'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2902939Z CGO_LDFLAGS='-O2 -g'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2903294Z CXX='g++'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2903623Z GCCGO='gccgo'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2904079Z GO111MODULE=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2904413Z GOAMD64='v1'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2904780Z GOARCH='amd64'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2905155Z GOAUTH='netrc'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2905478Z GOBIN=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2905838Z GOCACHE='/home/runner/.cache/go-build'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2906148Z GOCACHEPROG=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2906353Z GODEBUG=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2906644Z GOENV='/home/runner/.config/go/env'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2906951Z GOEXE=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2907148Z GOEXPERIMENT=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2907404Z GOFIPS140='off'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2907608Z GOFLAGS=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2908257Z GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build485123201=/tmp/go-build -gno-record-gcc-switches'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2908921Z GOHOSTARCH='amd64'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2909178Z GOHOSTOS='linux'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2909948Z GOINSECURE=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2910283Z GOMOD='/home/runner/work/tokenguard-operator/tokenguard-operator/go.mod'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2910769Z GOMODCACHE='/home/runner/go/pkg/mod'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2911043Z GONOPROXY=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2911228Z GONOSUMDB=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2911442Z GOOS='linux'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2911670Z GOPATH='/home/runner/go'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2912268Z GOPRIVATE=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2912779Z GOPROXY='https://proxy.golang.org,direct'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2913362Z GOROOT='/opt/hostedtoolcache/go/1.25.3/x64'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2913832Z GOSUMDB='sum.golang.org'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2914348Z GOTELEMETRY='local'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2914866Z GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2915404Z GOTMPDIR=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2915665Z GOTOOLCHAIN='auto'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2915991Z GOTOOLDIR='/opt/hostedtoolcache/go/1.25.3/x64/pkg/tool/linux_amd64'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2916330Z GOVCS=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2916529Z GOVERSION='go1.25.3'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2916775Z GOWORK=''
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2917067Z PKG_CONFIG='pkg-config'
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2917243Z 
+Run on Ubuntu	Setup Go	2026-03-25T16:18:29.2917718Z ##[endgroup]
+Run on Ubuntu	Install the latest version of kind	﻿2026-03-25T16:18:29.3141099Z ##[group]Run curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-$(go env GOARCH)
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3141817Z [36;1mcurl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-$(go env GOARCH)[0m
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3142246Z [36;1mchmod +x ./kind[0m
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3142507Z [36;1msudo mv ./kind /usr/local/bin/kind[0m
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3180005Z shell: /usr/bin/bash -e {0}
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3180338Z ##[endgroup]
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3628584Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.3630121Z                                  Dload  Upload   Total   Spent    Left  Speed
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.4998335Z 
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.4999405Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.5000560Z 100    86  100    86    0     0    627      0 --:--:-- --:--:-- --:--:--   632
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.7013849Z 
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.8342748Z   0 9972k    0 61395    0     0   177k      0  0:00:56 --:--:--  0:00:56  177k
+Run on Ubuntu	Install the latest version of kind	2026-03-25T16:18:29.8343689Z 100 9972k  100 9972k    0     0  20.6M      0 --:--:-- --:--:-- --:--:-- 73.3M
+Run on Ubuntu	Verify kind installation	﻿2026-03-25T16:18:29.8917562Z ##[group]Run kind version
+Run on Ubuntu	Verify kind installation	2026-03-25T16:18:29.8917907Z [36;1mkind version[0m
+Run on Ubuntu	Verify kind installation	2026-03-25T16:18:29.8953578Z shell: /usr/bin/bash -e {0}
+Run on Ubuntu	Verify kind installation	2026-03-25T16:18:29.8953896Z ##[endgroup]
+Run on Ubuntu	Verify kind installation	2026-03-25T16:18:29.9392817Z kind v0.32.0-alpha+446e36866289a5 go1.25.7 linux/amd64
+Run on Ubuntu	Running Test e2e	﻿2026-03-25T16:18:29.9425677Z ##[group]Run go mod tidy
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:29.9426049Z [36;1mgo mod tidy[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:29.9426398Z [36;1mmake test-e2e[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:29.9460585Z shell: /usr/bin/bash -e {0}
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:29.9460894Z ##[endgroup]
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:30.8674874Z No kind clusters found.
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:30.8678808Z Creating Kind cluster 'my-crd-operator-test-e2e'...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:31.1638817Z Creating cluster "my-crd-operator-test-e2e" ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:18:31.1639880Z  • Ensuring node image (kindest/node:v1.35.1) 🖼  ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:32.7459877Z  ✓ Ensuring node image (kindest/node:v1.35.1) 🖼
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:32.7460565Z  • Preparing nodes 📦   ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:34.4165058Z  ✓ Preparing nodes 📦 
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:34.4395156Z  • Writing configuration 📜  ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:34.5887967Z  ✓ Writing configuration 📜
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:34.5888413Z  • Starting control-plane 🕹️  ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:41.9525646Z  ✓ Starting control-plane 🕹️
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:41.9526075Z  • Installing CNI 🔌  ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.2139665Z  ✓ Installing CNI 🔌
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.2140256Z  • Installing StorageClass 💾  ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.5071862Z  ✓ Installing StorageClass 💾
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6396310Z Set kubectl context to "kind-my-crd-operator-test-e2e"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6397009Z You can now use your cluster with:
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6397262Z 
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6397551Z kubectl cluster-info --context kind-my-crd-operator-test-e2e
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6397967Z 
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6398813Z Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6424473Z mkdir -p "/home/runner/work/tokenguard-operator/tokenguard-operator/bin"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:42.6505898Z Downloading sigs.k8s.io/controller-tools/cmd/controller-gen@v0.20.1
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:43.9467361Z "/home/runner/work/tokenguard-operator/tokenguard-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:44.5865480Z "/home/runner/work/tokenguard-operator/tokenguard-operator/bin/controller-gen" object:headerFile="hack/boilerplate.go.txt" paths="./..."
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:45.4910760Z go fmt ./...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:45.5956870Z go vet ./...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.3893155Z KIND=kind KIND_CLUSTER=my-crd-operator-test-e2e go test -tags=e2e ./test/e2e/ -v -ginkgo.v
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8188588Z === RUN   TestE2E
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8189261Z   Starting my-crd-operator e2e test suite
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8192432Z Running Suite: e2e suite - /home/runner/work/tokenguard-operator/tokenguard-operator/test/e2e
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8193287Z =============================================================================================
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8194202Z Random Seed: [1m1774455886[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8194460Z 
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8194616Z Will run [1m2[0m of [1m2[0m specs
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8195086Z [38;5;243m------------------------------[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8195379Z [0m[1m[BeforeSuite] [0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8196078Z [38;5;243m/home/runner/work/tokenguard-operator/tokenguard-operator/test/e2e/e2e_suite_test.go:51[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8196838Z   [1mSTEP:[0m building the manager image [38;5;243m@ 03/25/26 16:24:46.819[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:24:46.8197581Z   running: "make docker-build IMG=example.com/my-crd-operator:v0.0.1"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:14.0211940Z   [1mSTEP:[0m loading the manager image on Kind [38;5;243m@ 03/25/26 16:26:14.02[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:14.0213109Z   running: "kind load docker-image example.com/my-crd-operator:v0.0.1 --name my-crd-operator-test-e2e"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:15.5943540Z   [1mSTEP:[0m checking if CertManager is already installed [38;5;243m@ 03/25/26 16:26:15.594[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:15.5944467Z   running: "kubectl get crds"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:17.3009436Z   [1mSTEP:[0m installing CertManager [38;5;243m@ 03/25/26 16:26:17.3[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:17.3010517Z   running: "kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:18.4346708Z   running: "kubectl wait deployment.apps/cert-manager-webhook --for condition=Available --namespace cert-manager --timeout 5m"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3180007Z [38;5;10m[BeforeSuite] PASSED [103.499 seconds][0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3180683Z [38;5;243m------------------------------[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3181356Z [0mManager [38;5;243mManager [0m[1mshould run successfully[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3182391Z [38;5;243m/home/runner/work/tokenguard-operator/tokenguard-operator/test/e2e/e2e_test.go:144[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3184719Z   [1mSTEP:[0m creating manager namespace [38;5;243m@ 03/25/26 16:26:30.317[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.3185707Z   running: "kubectl create ns my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.4454078Z   [1mSTEP:[0m labeling the namespace to enforce the restricted security policy [38;5;243m@ 03/25/26 16:26:30.445[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.4455113Z   running: "kubectl label --overwrite ns my-crd-operator-system pod-security.kubernetes.io/enforce=restricted"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.4962415Z   [1mSTEP:[0m installing CRDs [38;5;243m@ 03/25/26 16:26:30.495[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:30.4962895Z   running: "make install"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:41.5734561Z   [1mSTEP:[0m deploying the controller-manager [38;5;243m@ 03/25/26 16:26:41.573[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:41.5735722Z   running: "make deploy IMG=example.com/my-crd-operator:v0.0.1"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:42.5290512Z   [1mSTEP:[0m validating that the controller-manager pod is running as expected [38;5;243m@ 03/25/26 16:26:42.528[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:42.5292340Z   running: "kubectl get pods -l control-plane=controller-manager -o go-template={{ range .items }}{{ if not .metadata.deletionTimestamp }}{{ .metadata.name }}{{ \"\\n\" }}{{ end }}{{ end }} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:42.5897286Z   running: "kubectl get pods my-crd-operator-controller-manager-5fffcd77f4-72w9x -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.6342267Z   running: "kubectl get pods -l control-plane=controller-manager -o go-template={{ range .items }}{{ if not .metadata.deletionTimestamp }}{{ .metadata.name }}{{ \"\\n\" }}{{ end }}{{ end }} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.6794873Z   running: "kubectl get pods my-crd-operator-controller-manager-5fffcd77f4-72w9x -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7222014Z [38;5;10m• [13.404 seconds][0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7222685Z [38;5;243m------------------------------[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7223494Z [0mManager [38;5;243mManager [0m[1mshould ensure the metrics endpoint is serving metrics[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7224728Z [38;5;243m/home/runner/work/tokenguard-operator/tokenguard-operator/test/e2e/e2e_test.go:176[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7226204Z   [1mSTEP:[0m creating a ClusterRoleBinding for the service account to allow access to metrics [38;5;243m@ 03/25/26 16:26:43.722[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.7228490Z   running: "kubectl create clusterrolebinding my-crd-operator-metrics-binding --clusterrole=my-crd-operator-metrics-reader --serviceaccount=my-crd-operator-system:my-crd-operator-controller-manager"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.9711495Z   [1mSTEP:[0m validating that the metrics service is available [38;5;243m@ 03/25/26 16:26:43.97[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:43.9712625Z   running: "kubectl get service my-crd-operator-controller-manager-metrics-service -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:44.0210681Z   [1mSTEP:[0m getting the service account token [38;5;243m@ 03/25/26 16:26:44.02[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:44.0634569Z   [1mSTEP:[0m ensuring the controller pod is ready [38;5;243m@ 03/25/26 16:26:44.063[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:44.0636037Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:45.1087050Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:46.1525000Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:47.1968041Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:48.2448995Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:49.2894157Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:50.3333711Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:51.3794156Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:52.4256558Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:53.4702941Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.5156135Z   running: "kubectl get pod my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system -o jsonpath={.status.conditions[?(@.type=='Ready')].status}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.5607975Z   [1mSTEP:[0m verifying that the controller manager is serving the metrics server [38;5;243m@ 03/25/26 16:26:54.56[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.5609530Z   running: "kubectl logs my-crd-operator-controller-manager-5fffcd77f4-72w9x -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.6337081Z   [1mSTEP:[0m creating the curl-metrics pod to access the metrics endpoint [38;5;243m@ 03/25/26 16:26:54.633[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.6358572Z   running: "kubectl run curl-metrics --restart=Never --namespace my-crd-operator-system --image=curlimages/curl:latest --overrides {\n\t\t\t\t\t\"spec\": {\n\t\t\t\t\t\t\"containers\": [{\n\t\t\t\t\t\t\t\"name\": \"curl\",\n\t\t\t\t\t\t\t\"image\": \"curlimages/curl:latest\",\n\t\t\t\t\t\t\t\"command\": [\"/bin/sh\", \"-c\"],\n\t\t\t\t\t\t\t\"args\": [\n\t\t\t\t\t\t\t\t\"for i in $(seq 1 30); do curl -v -k -H 'Authorization: ***' https://my-crd-operator-controller-manager-metrics-service.my-crd-operator-system.svc.cluster.local:8443/metrics && exit 0 || sleep 2; done; exit 1\"\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\"securityContext\": {\n\t\t\t\t\t\t\t\t\"readOnlyRootFilesystem\": true,\n\t\t\t\t\t\t\t\t\"allowPrivilegeEscalation\": false,\n\t\t\t\t\t\t\t\t\"capabilities\": {\n\t\t\t\t\t\t\t\t\t\"drop\": [\"ALL\"]\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"runAsNonRoot\": true,\n\t\t\t\t\t\t\t\t\"runAsUser\": 1000,\n\t\t\t\t\t\t\t\t\"seccompProfile\": {\n\t\t\t\t\t\t\t\t\t\"type\": \"RuntimeDefault\"\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}],\n\t\t\t\t\t\t\"serviceAccountName\": \"my-crd-operator-controller-manager\"\n\t\t\t\t\t}\n\t\t\t\t}"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.6836209Z   [1mSTEP:[0m waiting for the curl-metrics pod to complete. [38;5;243m@ 03/25/26 16:26:54.683[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:54.6839053Z   running: "kubectl get pods curl-metrics -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:55.7315423Z   running: "kubectl get pods curl-metrics -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:56.7753022Z   running: "kubectl get pods curl-metrics -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:57.8252783Z   running: "kubectl get pods curl-metrics -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.8699000Z   running: "kubectl get pods curl-metrics -o jsonpath={.status.phase} -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.9140180Z   [1mSTEP:[0m getting the metrics by checking curl-metrics logs [38;5;243m@ 03/25/26 16:26:58.913[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.9141389Z   [1mSTEP:[0m getting the curl-metrics logs [38;5;243m@ 03/25/26 16:26:58.913[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.9142134Z   running: "kubectl logs curl-metrics -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.9712091Z   [1mSTEP:[0m cleaning up the curl pod for metrics [38;5;243m@ 03/25/26 16:26:58.97[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:58.9712795Z   running: "kubectl delete pod curl-metrics -n my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:59.0227732Z   [1mSTEP:[0m undeploying the controller-manager [38;5;243m@ 03/25/26 16:26:59.022[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:26:59.0228280Z   running: "make undeploy"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.0248914Z   [1mSTEP:[0m uninstalling CRDs [38;5;243m@ 03/25/26 16:27:05.024[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.0252281Z   running: "make uninstall"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7180401Z   [1mSTEP:[0m removing manager namespace [38;5;243m@ 03/25/26 16:27:05.717[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7181115Z   running: "kubectl delete ns my-crd-operator-system"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7604698Z [38;5;10m• [22.038 seconds][0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7606223Z [38;5;243m------------------------------[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7606647Z [0m[1m[AfterSuite] [0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7607492Z [38;5;243m/home/runner/work/tokenguard-operator/tokenguard-operator/test/e2e/e2e_suite_test.go:66[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7608575Z   [1mSTEP:[0m uninstalling CertManager [38;5;243m@ 03/25/26 16:27:05.76[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:05.7609829Z   running: "kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.8163214Z   running: "kubectl delete lease cert-manager-cainjector-leader-election -n kube-system --ignore-not-found --force --grace-period=0"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.8623266Z   running: "kubectl delete lease cert-manager-controller -n kube-system --ignore-not-found --force --grace-period=0"
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9063448Z [38;5;10m[AfterSuite] PASSED [13.146 seconds][0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9064407Z [38;5;243m------------------------------[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9064739Z 
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9065033Z [38;5;10m[1mRan 2 of 2 Specs in 152.087 seconds[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9066062Z [38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m2 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m0 Skipped[0m
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9066870Z --- PASS: TestE2E (152.09s)
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9067215Z PASS
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9071247Z ok  	github.com/yadid/token-guard/test/e2e	152.092s
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9147694Z make cleanup-test-e2e
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9173901Z make[1]: Entering directory '/home/runner/work/tokenguard-operator/tokenguard-operator'
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:18.9541888Z Deleting cluster "my-crd-operator-test-e2e" ...
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:19.4068545Z Deleted nodes: ["my-crd-operator-test-e2e-control-plane"]
+Run on Ubuntu	Running Test e2e	2026-03-25T16:27:19.4071712Z make[1]: Leaving directory '/home/runner/work/tokenguard-operator/tokenguard-operator'
+Run on Ubuntu	Post Setup Go	﻿2026-03-25T16:27:19.4142385Z Post job cleanup.
+Run on Ubuntu	Post Setup Go	2026-03-25T16:27:19.5610602Z [command]/opt/hostedtoolcache/go/1.25.3/x64/bin/go env GOMODCACHE
+Run on Ubuntu	Post Setup Go	2026-03-25T16:27:19.5645404Z [command]/opt/hostedtoolcache/go/1.25.3/x64/bin/go env GOCACHE
+Run on Ubuntu	Post Setup Go	2026-03-25T16:27:19.5666778Z /home/runner/go/pkg/mod
+Run on Ubuntu	Post Setup Go	2026-03-25T16:27:19.5689934Z /home/runner/.cache/go-build
+Run on Ubuntu	Post Setup Go	2026-03-25T16:27:19.5694470Z Cache hit occurred on the primary key setup-go-Linux-x64-ubuntu24-go-1.25.3-6cf5617e09df37a4831aaef4adf80096d8c20fb033749df21d6e77f04a732c87, not saving cache.
+Run on Ubuntu	Post Clone the code	﻿2026-03-25T16:27:19.5799621Z Post job cleanup.
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6655116Z [command]/usr/bin/git version
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6687974Z git version 2.53.0
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6725222Z Temporarily overriding HOME='/home/runner/work/_temp/d4874f23-a20a-4b51-b8f4-b588776ec458' before making global git config changes
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6726244Z Adding repository directory to the temporary git global config as a safe directory
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6737798Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/tokenguard-operator/tokenguard-operator
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6767172Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6794099Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.6982495Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.7000546Z http.https://github.com/.extraheader
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.7011095Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.7035714Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.7217795Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Run on Ubuntu	Post Clone the code	2026-03-25T16:27:19.7245447Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Run on Ubuntu	Complete job	﻿2026-03-25T16:27:19.7530580Z Cleaning up orphan processes
+Run on Ubuntu	Complete job	2026-03-25T16:27:19.7930165Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-go@v5. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

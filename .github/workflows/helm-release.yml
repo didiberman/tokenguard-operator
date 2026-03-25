@@ -1,0 +1,39 @@
+name: Helm Chart Release
+
+on:
+    push:
+        tags:
+            - "v*" # Trigger strictly on version tags like v1.0.0
+
+jobs:
+    release:
+        permissions:
+            contents: write
+            packages: write
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Configure Git
+              run: |
+                  git config user.name "$GITHUB_ACTOR"
+                  git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+            - name: Install Helm
+              uses: azure/setup-helm@v4
+
+            - name: Run Kustomize to generate manifest
+              run: |
+                  mkdir -p charts/tokenguard-operator/templates
+                  make build-installer IMG=ghcr.io/didiberman/tokenguard-operator:${{ github.ref_name }}
+                  # We place the generated kustomize output directly into the Helm chart template directory
+                  # This allows Helm to cleanly package the entire Operator in one go.
+                  cp dist/install.yaml charts/tokenguard-operator/templates/install.yaml
+
+            - name: Run Chart Releaser
+              uses: helm/chart-releaser-action@v1.6.0
+              env:
+                  CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
