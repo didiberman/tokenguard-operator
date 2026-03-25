@@ -1,7 +1,9 @@
 # Build the manager binary
-FROM golang:1.25 AS builder
+# Pin builder to the runner's native platform so Go cross-compiles without QEMU
+FROM --platform=$BUILDPLATFORM golang:1.25 AS builder
 ARG TARGETOS
 ARG TARGETARCH
+ARG BUILDPLATFORM
 
 WORKDIR /workspace
 # Copy the Go Modules manifests
