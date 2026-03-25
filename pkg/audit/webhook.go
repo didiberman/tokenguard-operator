@@ -103,7 +103,9 @@ func (r *Receiver) handleAudit(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, "Failed to read body", http.StatusBadRequest)
 		return
 	}
-	defer req.Body.Close()
+	defer func() {
+		_ = req.Body.Close()
+	}()
 
 	var eventList EventList
 	if err := json.Unmarshal(body, &eventList); err != nil {
