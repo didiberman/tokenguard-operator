@@ -1,0 +1,58 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/didiberman/tokenguard-operator/token-guard
+  pullPolicy: IfNotPresent
+  tag: ""  # Defaults to .Chart.AppVersion
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+# Audit webhook HTTP server (receives K8s audit events from the API server)
+auditWebhook:
+  port: 8080
+  service:
+    type: ClusterIP
+
+# Controller manager health/readiness probes
+healthProbe:
+  port: 8081
+
+# Metrics endpoint (HTTPS by default)
+metrics:
+  enabled: false
+  port: 8443
+  secure: true
+
+leaderElection:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 64Mi
+
+securityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

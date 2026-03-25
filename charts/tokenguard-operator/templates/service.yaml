@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tokenguard-operator.fullname" . }}-audit-webhook
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "tokenguard-operator.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.auditWebhook.service.type }}
+  selector:
+    {{- include "tokenguard-operator.selectorLabels" . | nindent 4 }}
+  ports:
+  - name: audit-webhook
+    port: {{ .Values.auditWebhook.port }}
+    targetPort: audit-webhook
+    protocol: TCP
