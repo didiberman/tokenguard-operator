@@ -1,39 +1,51 @@
 name: Helm Chart Release
 
 on:
-    push:
-        tags:
-            - "v*" # Trigger strictly on version tags like v1.0.0
+  push:
+    tags:
+      - "v*"
 
 jobs:
-    release:
-        permissions:
-            contents: write
-            packages: write
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+  release:
+    name: Package & Push Helm Chart to GHCR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Configure Git
-              run: |
-                  git config user.name "$GITHUB_ACTOR"
-                  git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Install Helm
+        uses: azure/setup-helm@v4
 
-            - name: Install Helm
-              uses: azure/setup-helm@v4
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            - name: Run Kustomize to generate manifest
-              run: |
-                  mkdir -p charts/tokenguard-operator/templates
-                  make build-installer IMG=ghcr.io/didiberman/tokenguard-operator:${{ github.ref_name }}
-                  # We place the generated kustomize output directly into the Helm chart template directory
-                  # This allows Helm to cleanly package the entire Operator in one go.
-                  cp dist/install.yaml charts/tokenguard-operator/templates/install.yaml
+      - name: Set version from tag
+        id: version
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
-            - name: Run Chart Releaser
-              uses: helm/chart-releaser-action@v1.6.0
-              env:
-                  CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Update Chart version and appVersion
+        run: |
+          sed -i "s/^appVersion:.*/appVersion: \"${{ steps.version.outputs.version }}\"/" charts/tokenguard-operator/Chart.yaml
+          sed -i "s/^version:.*/version: ${{ steps.version.outputs.version }}/" charts/tokenguard-operator/Chart.yaml
+
+      - name: Lint Helm chart
+        run: helm lint charts/tokenguard-operator
+
+      - name: Package Helm chart
+        run: |
+          mkdir -p dist
+          helm package charts/tokenguard-operator --destination dist/
+
+      - name: Push Helm chart to GHCR OCI
+        run: helm push dist/tokenguard-operator-*.tgz oci://ghcr.io/${{ github.repository }}/charts
+
+      - name: Attach chart to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/tokenguard-operator-*.tgz
