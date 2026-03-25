@@ -19,6 +19,7 @@ package controller
 import (
 	"context"
 	"fmt"
+	"slices"
 	"strings"
 	"time"
 
@@ -94,7 +95,7 @@ func (r *SAAuditorReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 			allUsed = append(allUsed, fmt.Sprintf("%s: %s", sa.Name, u))
 		}
 		for _, g := range granted {
-			if !contains(used, g) {
+			if !slices.Contains(used, g) {
 				allUnused = append(allUnused, fmt.Sprintf("%s: %s", sa.Name, g))
 			}
 		}
@@ -117,15 +118,6 @@ func (r *SAAuditorReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 
 	logger.Info("Reconciled SAAuditor", "namespace", targetNs, "score", score, "anomalies", len(anomalies))
 	return ctrl.Result{RequeueAfter: 2 * time.Minute}, nil
-}
-
-func contains(slice []string, val string) bool {
-	for _, s := range slice {
-		if s == val {
-			return true
-		}
-	}
-	return false
 }
 
 // SetupWithManager sets up the controller with the Manager.

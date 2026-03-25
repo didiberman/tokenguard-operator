@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -140,7 +141,7 @@ func (r *Receiver) handleAudit(w http.ResponseWriter, req *http.Request) {
 			}
 
 			// Add to set if not exists
-			if !contains(tu.UsedPermissions, perm) {
+			if !slices.Contains(tu.UsedPermissions, perm) {
 				tu.UsedPermissions = append(tu.UsedPermissions, perm)
 			}
 
@@ -155,13 +156,4 @@ func (r *Receiver) handleAudit(w http.ResponseWriter, req *http.Request) {
 
 	// Always return 200 OK so the API server doesn't retry
 	w.WriteHeader(http.StatusOK)
-}
-
-func contains(slice []string, val string) bool {
-	for _, s := range slice {
-		if s == val {
-			return true
-		}
-	}
-	return false
 }

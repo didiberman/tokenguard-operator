@@ -32,12 +32,13 @@ func (e *Evaluator) GetGrantedPermissions(ctx context.Context, namespace, saName
 
 	for _, rb := range roleBindings.Items {
 		if e.matchesSubject(rb.Subjects, namespace, saName) {
-			if rb.RoleRef.Kind == "Role" {
+			switch rb.RoleRef.Kind {
+			case "Role":
 				var role rbacv1.Role
 				if err := e.Client.Get(ctx, client.ObjectKey{Namespace: namespace, Name: rb.RoleRef.Name}, &role); err == nil {
 					granted = append(granted, e.formatRules(role.Rules)...)
 				}
-			} else if rb.RoleRef.Kind == "ClusterRole" {
+			case "ClusterRole":
 				var crole rbacv1.ClusterRole
 				if err := e.Client.Get(ctx, client.ObjectKey{Name: rb.RoleRef.Name}, &crole); err == nil {
 					granted = append(granted, e.formatRules(crole.Rules)...)
@@ -77,7 +78,7 @@ func (e *Evaluator) matchesSubject(subjects []rbacv1.Subject, namespace, saName 
 }
 
 func (e *Evaluator) formatRules(rules []rbacv1.PolicyRule) []string {
-	var formatted []string
+	formatted := make([]string, 0, len(rules))
 	for _, r := range rules {
 		verbs := strings.Join(r.Verbs, ",")
 
