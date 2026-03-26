@@ -22,7 +22,8 @@ const htmlTmpl = `<!DOCTYPE html>
 <title>TokenGuard Report</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:#0f1117;color:#e2e8f0;min-height:100vh}
   header{background:#1a1d27;border-bottom:1px solid #2d3148;padding:20px 32px;display:flex;align-items:center;gap:12px}
   header h1{font-size:1.4rem;font-weight:700;color:#fff}
   header span{font-size:.8rem;color:#6b7280;background:#2d3148;padding:3px 8px;border-radius:4px}
@@ -40,11 +41,15 @@ const htmlTmpl = `<!DOCTYPE html>
   .card-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0}
   .section{padding:16px 20px;border-right:1px solid #2d3148}
   .section:last-child{border-right:none}
-  .section h3{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:10px}
+  .section h3{font-size:.7rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:.08em;color:#6b7280;margin-bottom:10px}
   .perm-list{list-style:none;max-height:180px;overflow-y:auto}
-  .perm-list li{font-size:.78rem;padding:3px 0;color:#94a3b8;border-bottom:1px solid #1e2130;font-family:'SF Mono',Monaco,monospace}
+  .perm-list li{font-size:.78rem;padding:3px 0;color:#94a3b8;
+    border-bottom:1px solid #1e2130;font-family:'SF Mono',Monaco,monospace}
   .perm-list li:last-child{border-bottom:none}
-  .anomaly{background:#450a0a;border:1px solid #7f1d1d;border-radius:6px;padding:8px 12px;font-size:.8rem;color:#fca5a5;margin-bottom:6px;font-family:'SF Mono',Monaco,monospace}
+  .anomaly{background:#450a0a;border:1px solid #7f1d1d;border-radius:6px;
+    padding:8px 12px;font-size:.8rem;color:#fca5a5;
+    margin-bottom:6px;font-family:'SF Mono',Monaco,monospace}
   .none{color:#4b5563;font-size:.8rem;font-style:italic}
   .score-bar-wrap{padding:12px 20px;border-top:1px solid #2d3148;display:flex;align-items:center;gap:12px}
   .score-bar-bg{flex:1;height:6px;background:#2d3148;border-radius:3px;overflow:hidden}
@@ -145,7 +150,7 @@ func NewServer(c client.Client, addr string) *Server {
 			}
 			return "#f87171"
 		},
-		"not": func(v interface{}) bool {
+		"not": func(v any) bool {
 			switch val := v.(type) {
 			case bool:
 				return !val
