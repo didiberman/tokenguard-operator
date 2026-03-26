@@ -30,6 +30,8 @@ spec:
         command: ["/manager"]
         args:
         - --health-probe-bind-address=:{{ .Values.healthProbe.port }}
+        - --audit-webhook-bind-address=:{{ .Values.auditWebhook.port }}
+        - --report-bind-address=:{{ .Values.report.port }}
         {{- if .Values.leaderElection.enabled }}
         - --leader-elect
         {{- end }}
@@ -42,6 +44,9 @@ spec:
         ports:
         - name: audit-webhook
           containerPort: {{ .Values.auditWebhook.port }}
+          protocol: TCP
+        - name: report
+          containerPort: {{ .Values.report.port }}
           protocol: TCP
         - name: health
           containerPort: {{ .Values.healthProbe.port }}

@@ -16,7 +16,13 @@ serviceAccount:
 
 # Audit webhook HTTP server (receives K8s audit events from the API server)
 auditWebhook:
-  port: 8080
+  port: 9443
+  service:
+    type: ClusterIP
+
+# HTML report server (browse SAAuditor status at /report)
+report:
+  port: 9090
   service:
     type: ClusterIP
 

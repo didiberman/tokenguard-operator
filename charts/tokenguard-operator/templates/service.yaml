@@ -14,3 +14,20 @@ spec:
     port: {{ .Values.auditWebhook.port }}
     targetPort: audit-webhook
     protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tokenguard-operator.fullname" . }}-report
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "tokenguard-operator.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.report.service.type }}
+  selector:
+    {{- include "tokenguard-operator.selectorLabels" . | nindent 4 }}
+  ports:
+  - name: report
+    port: {{ .Values.report.port }}
+    targetPort: report
+    protocol: TCP

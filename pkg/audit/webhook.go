@@ -50,12 +50,14 @@ type TokenUsage struct {
 type Receiver struct {
 	// SAUsageMap maps "namespace/serviceaccount" to its token usage
 	SAUsageMap map[string]*TokenUsage
+	addr       string
 	mu         sync.RWMutex
 }
 
-func NewReceiver() *Receiver {
+func NewReceiver(addr string) *Receiver {
 	return &Receiver{
 		SAUsageMap: make(map[string]*TokenUsage),
+		addr:       addr,
 	}
 }
 
@@ -67,7 +69,7 @@ func (r *Receiver) Start(ctx context.Context) error {
 	mux.HandleFunc("/audit", r.handleAudit)
 
 	server := &http.Server{
-		Addr:    ":8080",
+		Addr:    r.addr,
 		Handler: mux,
 	}
 

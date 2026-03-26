@@ -39,6 +39,7 @@ import (
 	"github.com/yadid/token-guard/internal/controller"
 	"github.com/yadid/token-guard/pkg/audit"
 	"github.com/yadid/token-guard/pkg/rbac"
+	"github.com/yadid/token-guard/pkg/report"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -61,12 +62,16 @@ func main() {
 	var webhookCertPath, webhookCertName, webhookCertKey string
 	var enableLeaderElection bool
 	var probeAddr string
+	var auditAddr string
+	var reportAddr string
 	var secureMetrics bool
 	var enableHTTP2 bool
 	var tlsOpts []func(*tls.Config)
 	flag.StringVar(&metricsAddr, "metrics-bind-address", "0", "The address the metrics endpoint binds to. "+
 		"Use :8443 for HTTPS or :8080 for HTTP, or leave as 0 to disable the metrics service.")
 	flag.StringVar(&probeAddr, "health-probe-bind-address", ":8081", "The address the probe endpoint binds to.")
+	flag.StringVar(&auditAddr, "audit-webhook-bind-address", ":9443", "The address the audit webhook receiver binds to.")
+	flag.StringVar(&reportAddr, "report-bind-address", ":9090", "The address the HTML report server binds to.")
 	flag.BoolVar(&enableLeaderElection, "leader-elect", false,
 		"Enable leader election for controller manager. "+
 			"Enabling this will ensure there is only one active controller manager.")
@@ -180,9 +185,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	auditRecv := audit.NewReceiver()
+	auditRecv := audit.NewReceiver(auditAddr)
 	if err := mgr.Add(auditRecv); err != nil {
 		setupLog.Error(err, "Failed to add audit webhook receiver to manager")
+		os.Exit(1)
+	}
+
+	reportServer := report.NewServer(mgr.GetClient(), reportAddr)
+	if err := mgr.Add(reportServer); err != nil {
+		setupLog.Error(err, "Failed to add report server to manager")
 		os.Exit(1)
 	}
 

@@ -44,9 +44,10 @@ Over-permissioned ServiceAccounts are one of the most common Kubernetes misconfi
 │   └──────────────────┘       ┌──────────────────────────────┐  │
 │                               │   TokenGuard Operator        │  │
 │   ┌──────────────────┐        │                              │  │
-│   │  RoleBindings /  │ ──────►│  audit.Receiver  (port 8080) │  │
+│   │  RoleBindings /  │ ──────►│  audit.Receiver  (port 9443) │  │
 │   │  ClusterRoles    │        │  rbac.Evaluator              │  │
 │   └──────────────────┘        │  SAAuditorReconciler         │  │
+│                               │  report.Server   (port 9090) │  │
 │                               └──────────────┬───────────────┘  │
 │                                              │ updates status    │
 │                               ┌──────────────▼───────────────┐  │
@@ -128,7 +129,9 @@ my-crd-operator/
 │   └── saauditor_controller.go   # Reconcile loop — scores SAs, writes status
 ├── pkg/
 │   ├── audit/
-│   │   └── webhook.go            # HTTP server (:8080) that receives K8s audit events
+│   │   └── webhook.go            # HTTP server (:9443) that receives K8s audit events
+│   ├── report/
+│   │   └── server.go             # HTTP server (:9090) serving the HTML report at /report
 │   └── rbac/
 │       └── evaluator.go          # Walks RoleBindings/ClusterRoleBindings to compute granted permissions
 ├── config/
@@ -144,7 +147,9 @@ my-crd-operator/
 
 ### Key components
 
-**`audit.Receiver`** — Implements `manager.Runnable`. Starts an HTTP server on `:8080` that accepts `POST /audit` requests from the Kubernetes API server's audit webhook backend. Parses `EventList` payloads, extracts the verb+resource+apiGroup per ServiceAccount, and stores a deduplicated set of `UsedPermissions` along with all observed source IPs (thread-safe via `sync.RWMutex`).
+**`audit.Receiver`** — Implements `manager.Runnable`. Starts an HTTP server on `:9443` (configurable via `--audit-webhook-bind-address`) that accepts `POST /audit` requests from the Kubernetes API server's audit webhook backend. Parses `EventList` payloads, extracts the verb+resource+apiGroup per ServiceAccount, and stores a deduplicated set of `UsedPermissions` along with all observed source IPs (thread-safe via `sync.RWMutex`).
+
+**`report.Server`** — Implements `manager.Runnable`. Starts an HTTP server on `:9090` (configurable via `--report-bind-address`) serving a live HTML dashboard at `/report`. Queries all `SAAuditor` resources and renders scores, used/unused permissions, and anomalies in a dark-themed UI. Access it via `kubectl port-forward` or the `tokenguard-operator-report` Service.
 
 **`rbac.Evaluator`** — Walks all `RoleBindings` (namespace-scoped) and `ClusterRoleBindings` (cluster-wide) that reference a given ServiceAccount. Resolves both `Role` and `ClusterRole` references and formats rules as `"verb /apiGroup/resource"` strings for direct comparison with audit data.
 
@@ -164,13 +169,28 @@ my-crd-operator/
 - Kubernetes cluster v1.35+ (or [Kind](https://kind.sigs.k8s.io/) for local dev)
 - `kubectl` configured against your target cluster
 - Docker (for building images)
-- The Kubernetes API server configured with an **audit webhook** pointing to `http://<operator-service>:8080/audit`
+- The Kubernetes API server configured with an **audit webhook** pointing to `http://<operator-service>:9443/audit`
 
 ---
 
 ## Installation
 
-### Using Kustomize (recommended)
+### Using Helm (recommended)
+
+```bash
+helm upgrade --install tokenguard-operator \
+  oci://ghcr.io/didiberman/tokenguard-operator/charts/tokenguard-operator \
+  --namespace tokenguard-system --create-namespace
+```
+
+After installation, view the HTML report:
+
+```bash
+kubectl port-forward svc/tokenguard-operator-report -n tokenguard-system 9090:9090
+# open http://localhost:9090/report
+```
+
+### Using Kustomize
 
 ```bash
 # Install the CRD
@@ -200,7 +220,7 @@ kind: Config
 clusters:
   - name: tokenguard
     cluster:
-      server: http://<tokenguard-service>.<namespace>.svc.cluster.local:8080/audit
+      server: http://<tokenguard-service>.<namespace>.svc.cluster.local:9443/audit
 users:
   - name: tokenguard
 contexts:
@@ -249,6 +269,13 @@ kubectl get saauditor my-audit -o jsonpath='{.status.unusedPermissions}' | tr ',
 kubectl get saauditor my-audit -o jsonpath='{.status.anomalies}'
 ```
 
+6. View the live HTML report in your browser:
+
+```bash
+kubectl port-forward svc/tokenguard-operator-report -n <namespace> 9090:9090
+# then open http://localhost:9090/report
+```
+
 ---
 
 ## Anomaly Detection
@@ -276,6 +303,8 @@ The operator exposes Prometheus metrics over HTTPS on `:8443` (secured with mTLS
 
 | Flag | Default | Description |
 |---|---|---|
+| `--audit-webhook-bind-address` | `:9443` | Address the audit webhook receiver binds to |
+| `--report-bind-address` | `:9090` | Address the HTML report server binds to |
 | `--metrics-bind-address` | `0` (disabled) | Set to `:8443` (HTTPS) or `:8080` (HTTP) to enable |
 | `--metrics-secure` | `true` | Serve metrics over HTTPS |
 | `--health-probe-bind-address` | `:8081` | Liveness/readiness probe address |
